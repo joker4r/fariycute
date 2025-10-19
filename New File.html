@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fairy Calculator ✨</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap');
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #ffe1f2, #d0c3ff, #b2f0e3);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  @keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+
+  .calculator {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 20px rgba(255, 182, 193, 0.6);
+    border-radius: 20px;
+    padding: 20px;
+    width: 320px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 3px solid #ffb6c1;
+  }
+
+  .title {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.8em;
+    color: #ff69b4;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #fff;
+  }
+
+  input {
+    width: 90%;
+    height: 50px;
+    margin-bottom: 15px;
+    text-align: right;
+    font-size: 1.3em;
+    border-radius: 12px;
+    border: 2px solid #ffb6c1;
+    padding: 10px;
+    color: #333;
+    background-color: #fff;
+    box-shadow: inset 0 0 8px rgba(255,192,203,0.4);
+  }
+
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  button {
+    height: 55px;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2em;
+    background: linear-gradient(145deg, #ffe0f0, #ffd1e8);
+    color: #555;
+    font-weight: 600;
+    transition: transform 0.2s, background 0.3s;
+  }
+
+  button:hover {
+    background: linear-gradient(145deg, #ffd1e8, #ffe0f0);
+    transform: scale(1.05);
+  }
+
+  button.operator {
+    background: linear-gradient(145deg, #ffc1cc, #ff8fab);
+    color: #fff;
+  }
+
+  button.equal {
+    background: linear-gradient(145deg, #b2f0e3, #89f0d0);
+    color: #444;
+  }
+
+  button.clear {
+    background: linear-gradient(145deg, #ffb6c1, #ff92b0);
+    color: #fff;
+  }
+
+  footer {
+    margin-top: 25px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .ad-container {
+    margin-top: 20px;
+    width: 320px;
+    height: 50px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(255,182,193,0.6);
+  }
+
+  @media (max-width: 480px) {
+    .calculator {
+      width: 90%;
+    }
+    .ad-container {
+      width: 90%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+  <div class="title">Fairy ✨ Calculator</div>
+  <input type="text" id="display" disabled>
+  <div class="buttons">
+    <button class="clear" onclick="clearDisplay()">C</button>
+    <button onclick="appendValue('(')">(</button>
+    <button onclick="appendValue(')')">)</button>
+    <button class="operator" onclick="appendValue('/')">÷</button>
+
+    <button onclick="appendValue('7')">7</button>
+    <button onclick="appendValue('8')">8</button>
+    <button onclick="appendValue('9')">9</button>
+    <button class="operator" onclick="appendValue('*')">×</button>
+
+    <button onclick="appendValue('4')">4</button>
+    <button onclick="appendValue('5')">5</button>
+    <button onclick="appendValue('6')">6</button>
+    <button class="operator" onclick="appendValue('-')">−</button>
+
+    <button onclick="appendValue('1')">1</button>
+    <button onclick="appendValue('2')">2</button>
+    <button onclick="appendValue('3')">3</button>
+    <button class="operator" onclick="appendValue('+')">+</button>
+
+    <button onclick="appendValue('0')">0</button>
+    <button onclick="appendValue('.')">.</button>
+    <button class="equal" onclick="calculate()">=</button>
+    <button onclick="backspace()">⌫</button>
+  </div>
+</div>
+
+<!-- Your Ad Code Section -->
+<footer>
+  <div class="ad-container">
+    <script type="text/javascript">  
+      atOptions = {  
+        'key' : 'a3c5bcc41e8b9a83a7b461c7b3dfcf79',  
+        'format' : 'iframe',  
+        'height' : 250,  
+        'width' : 300,  
+        'params' : {}  
+      };  
+    </script>  
+    <script type="text/javascript" src="//nicelyclangbitterness.com/a3c5bcc41e8b9a83a7b461c7b3dfcf79/invoke.js"></script>
+  </div>
+
+
+</footer>
+
+<script>
+  const display = document.getElementById('display');
+
+  function appendValue(value) {
+    display.value += value;
+  }
+
+  function clearDisplay() {
+    display.value = '';
+  }
+
+  function backspace() {
+    display.value = display.value.slice(0, -1);
+  }
+
+  function calculate() {
+    try {
+      display.value = eval(display.value.replace('÷','/').replace('×','*'));
+    } catch {
+      display.value = 'Error';
+    }
+  }
+</script>
+
+</body>
+</html>
